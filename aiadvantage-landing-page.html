@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIADVANTAGE — Own Your Company's AI Advantage in 15 Days</title>
+<meta name="description" content="AIADVANTAGE is a 15-day, fixed-fee AI consulting and setup engagement that gives small and mid-sized companies a working AI foundation they own, understand, and can keep extending.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --midnight:#0d1b2f;
+    --midnight-soft:#12243b;
+    --node-line:rgba(23, 156, 138,.5);
+    --node-dot:rgba(23, 156, 138,.5);
+    --ink:#1a1a2e;
+    --ink-soft:#2f2f3a;
+    --teal:hsl(187,74%,30%);
+    --teal-dark:hsl(187,74%,21%);
+    --purple:hsl(270,70%,45%);
+    --purple-soft:hsl(270,55%,58%);
+    --muted:#5a5f66;
+    --line:#e4e7ea;
+    --bg:#ffffff;
+    --bg-alt:#f6f8f9;
+    --bg-ink:var(--midnight);
+    --radius:14px;
+    --maxw:1120px;
+    --shadow:0 1px 2px rgba(20,20,40,.04), 0 8px 30px rgba(20,20,40,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17px}
+  h1,h2,h3,h4,.brand{font-family:'Space Grotesk',sans-serif;letter-spacing:-.01em;line-height:1.12;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:12.5px;font-weight:600;color:var(--teal)}
+  .grad-rule{height:3px;width:64px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--purple));margin:18px 0 26px}
+  .lead{font-size:19px;color:var(--ink-soft)}
+  .muted{color:var(--muted)}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:10px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
+  .btn-primary{background:linear-gradient(120deg,var(--teal-dark),var(--teal) 55%,var(--purple));color:#fff;box-shadow:0 6px 20px rgba(40,40,90,.18)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(40,40,90,.26)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
+  .btn-light{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.28)}
+  .btn-light:hover{background:rgba(255,255,255,.18)}
+  .btn .arrow{transition:transform .15s ease}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{font-size:20px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+  .brand .mark{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--teal),var(--purple));display:inline-block;position:relative}
+  .brand .mark::after{content:"";position:absolute;inset:6px;border:1.5px solid rgba(255,255,255,.85);border-radius:3px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:14.5px;color:var(--muted);font-weight:500}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:flex;align-items:center;gap:16px}
+  .nav .btn{padding:10px 18px;font-size:14px}
+  .menu-toggle{display:none}
+
+  /* Section scaffolding */
+  section{padding:96px 0}
+  .section-head{max-width:760px;margin-bottom:48px}
+  .section-head h2{font-size:38px;font-weight:700;margin-top:4px}
+  .alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;padding:84px 0 92px}
+  .hero-grid-bg{position:absolute;inset:0;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:46px 46px;opacity:.5;
+    mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000 0%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000 0%,transparent 75%)}
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero h1{font-size:52px;font-weight:700;margin:18px 0 22px}
+  .hero h1 .accent{background:linear-gradient(120deg,var(--teal-dark),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:18.5px;color:var(--ink-soft);max-width:560px;margin-bottom:14px}
+  .hero p.sub2{font-size:16px;color:var(--muted);max-width:560px;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+  .price-badge{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 9px 9px 18px;font-size:14.5px;font-weight:500;color:var(--ink-soft);box-shadow:var(--shadow)}
+  .price-badge b{font-family:'Space Grotesk',sans-serif;color:var(--ink)}
+  .price-badge .pill{background:linear-gradient(120deg,var(--teal-dark),var(--purple));color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;padding:5px 12px;border-radius:999px}
+
+  /* Hero visual — knowledge architecture motif */
+  .hero-visual{position:relative}
+  .arch{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(30,30,70,.12))}
+
+  /* Generic card */
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(20,20,40,.10);border-color:#d4dadd}
+  .card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--muted)}
+
+  /* Problem */
+  .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;margin:34px 0 30px}
+  .pain{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;color:var(--ink-soft)}
+  .pain .dot{flex:none;width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,var(--teal),var(--purple));margin-top:3px;position:relative}
+  .pain .dot::after{content:"";position:absolute;inset:5px 4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);width:8px;height:4px}
+  .closing-line{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:600;color:var(--ink);max-width:760px;margin-top:8px}
+  .closing-line .accent{color:var(--teal-dark)}
+
+  /* Promise list */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .leave-list{list-style:none;display:grid;gap:11px}
+  .leave-list li{position:relative;padding-left:30px;font-size:15.5px;color:var(--ink-soft)}
+  .leave-list li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:4px;background:rgba(20,128,140,.12);border:1.5px solid var(--teal)}
+  .leave-list li::after{content:"";position:absolute;left:5px;top:11px;width:6px;height:6px;border-radius:1px;background:var(--teal-dark)}
+  .mastery{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;margin:6px 0 22px;color:var(--ink)}
+  .mastery .accent{color:var(--purple)}
+
+  /* Founder */
+  .founder{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+  .founder-photo{width:100%;aspect-ratio:1/1.12;border-radius:var(--radius);background:linear-gradient(150deg,#1c2740,#2a2350);position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#fff;box-shadow:var(--shadow)}
+  .founder-photo .ph-net{position:absolute;inset:0;opacity:.5}
+  .founder-photo .ph-label{position:relative;z-index:1;padding:18px 20px;font-size:13px;line-height:1.4;background:linear-gradient(transparent,rgba(0,0,0,.5))}
+  .founder-photo .ph-label b{font-family:'Space Grotesk',sans-serif;font-size:16px;display:block}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chip{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--teal-dark);background:rgba(20,128,140,.08);border:1px solid rgba(20,128,140,.2);padding:6px 13px;border-radius:999px}
+
+  /* Timeline */
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
+  .tl-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px 22px;box-shadow:var(--shadow)}
+  .tl-card .days{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--purple)}
+  .tl-card h3{font-size:18px;font-weight:600;margin:6px 0 12px}
+  .tl-bar{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--purple));margin-bottom:16px;width:100%}
+  .tl-card ul{list-style:none;display:grid;gap:7px}
+  .tl-card li{font-size:13.6px;color:var(--muted);padding-left:16px;position:relative;line-height:1.45}
+  .tl-card li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+  .tl-num{position:absolute;top:-14px;right:18px;width:30px;height:30px;border-radius:8px;background:var(--ink);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+
+  /* Artifacts — grouped categories */
+  .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .cat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 28px 24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .cat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--teal),var(--purple))}
+  .cat-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .cat-ico{flex:none;width:42px;height:42px;border-radius:11px;background:rgba(20,128,140,.09);border:1px solid rgba(20,128,140,.18);display:flex;align-items:center;justify-content:center;color:var(--teal-dark)}
+  .cat-ico svg{width:22px;height:22px}
+  .cat h3{font-size:18.5px;font-weight:600}
+  .cat .cat-sub{font-size:14px;color:var(--muted);margin:2px 0 16px}
+  .cat-items{display:grid;gap:13px}
+  .cat-item{padding-left:16px;position:relative}
+  .cat-item .ci-t{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:var(--ink)}
+  .cat-item .ci-d{font-size:13.6px;color:var(--muted);line-height:1.5}
+  .cat-item::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:2px;background:linear-gradient(135deg,var(--teal),var(--purple))}
+
+  /* Outcomes */
+  .outcomes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 26px;margin-bottom:30px}
+  .outcome{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+  .outcome .o-label{font-size:15.5px;color:var(--ink-soft);max-width:62%}
+  .outcome .o-target{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;color:var(--teal-dark);text-align:right;white-space:nowrap}
+  .disclaimer{font-size:13.6px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:12px;padding:16px 20px;max-width:880px}
+
+  /* Fit */
+  .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .fit{border-radius:18px;padding:28px;border:1px solid var(--line)}
+  .fit.yes{background:rgba(20,128,140,.05);border-color:rgba(20,128,140,.22)}
+  .fit.no{background:var(--bg-alt)}
+  .fit h3{font-size:18px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .fit h3 .tag{font-size:12px;font-family:'DM Sans';font-weight:600;padding:3px 10px;border-radius:999px}
+  .fit.yes .tag{background:var(--teal-dark);color:#fff}
+  .fit.no .tag{background:#cdd3d6;color:#3a3f44}
+  .fit ul{list-style:none;display:grid;gap:10px}
+  .fit li{font-size:15px;color:var(--ink-soft);padding-left:24px;position:relative}
+  .fit.yes li::before{content:"✓";position:absolute;left:0;top:0;color:var(--teal-dark);font-weight:700}
+  .fit.no li::before{content:"–";position:absolute;left:2px;top:0;color:#9aa1a6;font-weight:700}
+
+  /* Testimonials */
+  .tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tst{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);position:relative}
+  .tst .quote{font-size:15px;color:var(--ink-soft);line-height:1.6;margin-bottom:20px}
+  .tst .who{display:flex;align-items:center;gap:13px;border-top:1px solid var(--line);padding-top:16px}
+  .tst .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--purple));flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Space Grotesk';font-weight:600;font-size:15px}
+  .tst .who b{font-family:'Space Grotesk';font-size:15px;display:block;color:var(--ink)}
+  .tst .who span{font-size:13px;color:var(--muted)}
+  .ph-note{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:18px;text-align:center}
+
+  /* Pricing */
+  .pricing-card{max-width:880px;margin:0 auto;background:radial-gradient(circle at 18% 12%,var(--midnight-soft),var(--bg-ink) 44%);color:#fff;border-radius:22px;padding:46px;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(15,15,35,.28)}
+  .pricing-card .net-bg{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+  .pricing-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .pricing-card h2{color:#fff;font-size:30px}
+  .pricing-card .eyebrow{color:var(--purple-soft)}
+  .price-amount{font-family:'Space Grotesk',sans-serif;font-size:58px;font-weight:700;line-height:1;margin:10px 0 4px}
+  .price-amount span{font-size:18px;font-weight:500;color:rgba(255,255,255,.7)}
+  .price-sub{color:rgba(255,255,255,.72);font-size:15px;margin-bottom:24px}
+  .includes{list-style:none;display:grid;gap:9px}
+  .includes li{font-size:14.5px;color:rgba(255,255,255,.9);padding-left:26px;position:relative}
+  .includes li::before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,var(--teal),var(--purple-soft))}
+  .pricing-card .support{color:rgba(255,255,255,.7);font-size:14px;margin-top:22px;line-height:1.55}
+
+  /* Why now / Final CTA dark */
+  .dark{background:linear-gradient(145deg,var(--bg-ink),#101522);color:#fff;position:relative;overflow:hidden}
+  .dark .net-bg{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+  .dark .wrap{position:relative;z-index:1}
+  .dark h2{color:#fff}
+  .dark .lead{color:rgba(255,255,255,.82)}
+  .why-close{font-family:'Space Grotesk';font-size:24px;font-weight:600;color:#fff;max-width:720px;margin-top:24px}
+  .why-close .accent{background:linear-gradient(120deg,var(--teal),var(--purple-soft));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .final{text-align:center;padding:104px 0}
+  .final h2{font-size:42px;max-width:760px;margin:6px auto 22px}
+  .final .lead{max-width:660px;margin:0 auto 32px}
+  .final .hero-ctas{justify-content:center}
+  .final .secondary-line{font-family:'Space Grotesk';font-size:15px;color:rgba(255,255,255,.72);margin-top:22px}
+
+  /* Footer */
+  footer{background:#0b1220;color:rgba(255,255,255,.6);padding:40px 0;font-size:13.5px;position:relative;overflow:hidden}
+  footer .net-bg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;position:relative;z-index:1}
+  footer .brand{color:#fff;font-size:17px}
+  footer a{color:rgba(255,255,255,.75)}
+  footer a:hover{color:#fff}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;gap:38px}
+    .hero h1{font-size:40px}
+    .hero-visual{max-width:460px}
+    .two-col{grid-template-columns:1fr;gap:30px}
+    .founder{grid-template-columns:1fr;gap:28px}
+    .founder-photo{max-width:280px}
+    .timeline{grid-template-columns:repeat(2,1fr)}
+    .cat-grid{grid-template-columns:1fr}
+    .tst-grid{grid-template-columns:1fr}
+    .pricing-inner{grid-template-columns:1fr;gap:26px}
+    .section-head h2{font-size:30px}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    section{padding:64px 0}
+    .nav-links{display:none}
+    .pain-grid{grid-template-columns:1fr}
+    .outcomes{grid-template-columns:1fr}
+    .fit-grid{grid-template-columns:1fr}
+    .timeline{grid-template-columns:1fr}
+    .hero h1{font-size:33px}
+    .final h2{font-size:30px}
+    .pricing-card{padding:30px 22px}
+    .section-head h2{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="mark"></span>AIADVANTAGE</a>
+    <nav class="nav-links">
+      <a href="#problem">The Gap</a>
+      <a href="#engagement">15 Days</a>
+      <a href="#artifacts">What You Get</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="mailto:bill@excite.io?subject=AIADVANTAGE%20Application&body=Company%3A%0AWhat%20you%27re%20hoping%20to%20build%3A%0ATimeline%3A">Apply</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<a id="top"></a>
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">A 15-Day Bespoke AI Engagement</span>
+      <h1>Own Your Company's <span class="accent">AI Advantage</span> in 15 Days</h1>
+      <p class="sub">AIADVANTAGE is a couture AI consulting and setup engagement for small and mid-sized companies that want practical AI capability — not theory, hype, or dependency on a black-box vendor.</p>
+      <p class="sub2">In 15 days, we help your company build a working AI foundation: structured knowledge, custom workflows, reusable prompts, presentation automations, research systems, dashboards, virtual assistants, and industry-specific AI agents your team can understand, use, and extend.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="mailto:bill@excite.io?subject=AIADVANTAGE%20Application&body=Company%3A%0AWhat%20you%27re%20hoping%20to%20build%3A%0ATimeline%3A">Apply for AIADVANTAGE <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#artifacts">See What We Build</a>
+      </div>
+      <div class="price-badge"><span>15 Days. Built around your business.</span><span class="pill">$10,000 fixed</span></div>
+    </div>
+    <div class="hero-visual">
+      <!-- Knowledge architecture motif -->
+      <svg class="arch" viewBox="0 0 460 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI knowledge architecture diagram">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="hsl(187,74%,30%)"/><stop offset="1" stop-color="hsl(270,70%,45%)"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="hsl(187,74%,30%)" stop-opacity=".5"/><stop offset="1" stop-color="hsl(270,70%,45%)" stop-opacity=".5"/>
+          </linearGradient>
+        </defs>
+        <!-- connectors -->
+        <g stroke="url(#g2)" stroke-width="1.6" fill="none">
+          <path d="M230 80 V150"/>
+          <path d="M230 150 C150 150 110 190 110 230"/>
+          <path d="M230 150 V230"/>
+          <path d="M230 150 C310 150 350 190 350 230"/>
+          <path d="M110 270 V310"/>
+          <path d="M230 270 V310"/>
+          <path d="M350 270 V310"/>
+          <path d="M110 330 H80 V360"/><path d="M110 330 H140 V360"/>
+          <path d="M230 330 H200 V360"/><path d="M230 330 H260 V360"/>
+          <path d="M350 330 H320 V360"/><path d="M350 330 H380 V360"/>
+        </g>
+        <!-- top node -->
+        <rect x="178" y="50" width="104" height="34" rx="9" fill="url(#g1)"/>
+        <text x="230" y="72" text-anchor="middle" fill="#fff" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">Your Business</text>
+        <!-- mid hub -->
+        <circle cx="230" cy="150" r="9" fill="#fff" stroke="url(#g1)" stroke-width="3"/>
+        <!-- branch nodes -->
+        <g font-family="Space Grotesk, sans-serif" font-size="11.5" font-weight="600" fill="#1a1a2e" text-anchor="middle">
+          <g><rect x="64" y="232" width="92" height="38" rx="9" fill="#fff" stroke="#e0e4e7"/><text x="110" y="250">Knowledge</text><text x="110" y="263">Architecture</text></g>
+          <g><rect x="184" y="232" width="92" height="38" rx="9" fill="#fff" stroke="#e0e4e7"/><text x="230" y="250">Brand &amp;</text><text x="230" y="263">Voice</text></g>
+          <g><rect x="304" y="232" width="92" height="38" rx="9" fill="#fff" stroke="#e0e4e7"/><text x="350" y="250">Agents &amp;</text><text x="350" y="263">Workflows</text></g>
+        </g>
+        <!-- leaf dots -->
+        <g fill="url(#g1)">
+          <rect x="64" y="360" width="32" height="22" rx="6"/><rect x="124" y="360" width="32" height="22" rx="6"/>
+          <rect x="184" y="360" width="32" height="22" rx="6"/><rect x="244" y="360" width="32" height="22" rx="6"/>
+          <rect x="304" y="360" width="32" height="22" rx="6"/><rect x="364" y="360" width="32" height="22" rx="6"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section id="problem" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Real Gap</span>
+      <h2>Most Companies Are Experimenting With AI. Very Few Are Building Capability.</h2>
+    </div>
+    <p class="lead" style="max-width:840px">AI usage is already happening inside most companies. Employees are using ChatGPT, testing tools, drafting content, summarizing meetings, and experimenting with automation. But without structure, the results are inconsistent, risky, and difficult to scale.</p>
+    <p class="lead" style="max-width:840px;margin-top:16px">The real opportunity is not simply <em>using</em> AI. It's building an internal AI operating foundation your company owns.</p>
+    <div class="pain-grid">
+      <div class="pain"><span class="dot"></span>AI usage is scattered across employees and departments</div>
+      <div class="pain"><span class="dot"></span>Company knowledge isn't organized for AI use</div>
+      <div class="pain"><span class="dot"></span>Outputs are inconsistent and off-brand</div>
+      <div class="pain"><span class="dot"></span>Employees don't know what they can safely upload or automate</div>
+      <div class="pain"><span class="dot"></span>Leadership lacks a clear AI adoption roadmap</div>
+      <div class="pain"><span class="dot"></span>Tools are tested without reusable workflows</div>
+      <div class="pain"><span class="dot"></span>Institutional knowledge stays trapped in documents, inboxes, and people's heads</div>
+    </div>
+    <p class="closing-line">AIADVANTAGE turns scattered experimentation into <span class="accent">structured operating leverage.</span></p>
+  </div>
+</section>
+
+<!-- ============ CORE PROMISE ============ -->
+<section id="promise">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">The Core Promise</span>
+        <h2 class="section-head" style="font-size:36px;margin-bottom:20px">A Working AI Foundation Your Team Owns</h2>
+        <p class="lead">AIADVANTAGE is not a seminar, software subscription, or strategy deck. It's a hands-on buildout of your company's AI capability.</p>
+        <p class="muted" style="margin-top:16px">We work with your existing business, documents, brand, workflows, sales process, client communications, reporting needs, and growth priorities. Then we create a practical AI foundation your team can use immediately and keep improving over time.</p>
+        <p class="mastery" style="margin-top:24px">The goal is <span class="accent">mastery, not mystery.</span></p>
+      </div>
+      <div>
+        <div class="card" style="padding:30px">
+          <h3 style="margin-bottom:16px">Your company leaves with</h3>
+          <ul class="leave-list">
+            <li>AI-ready knowledge architecture</li>
+            <li>Custom prompts and reusable workflow systems</li>
+            <li>Brand, voice, and writing guides for AI-assisted output</li>
+            <li>Presentation and proposal generation systems</li>
+            <li>Research engines and reusable report structures</li>
+            <li>Dashboards and agentic assistants</li>
+            <li>Industry-specific knowledge agents</li>
+            <li>Governance guidelines and safe-use practices</li>
+            <li>A clear roadmap for expansion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDER ============ -->
+<section id="founder" class="alt">
+  <div class="wrap">
+    <div class="founder">
+      <div>
+        <div class="founder-photo">
+          <img src="assets/profile-portrait.png" alt="Bill Skidd portrait" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+          <div class="ph-label"><b>Bill Skidd</b>Founder &amp; Lead Consultant<br><span style="opacity:.7;font-size:12px">[ replace with headshot ]</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Who Builds It</span>
+        <h2 class="section-head" style="font-size:34px;margin-bottom:18px">Built by a Technologist and Systems Architect With 30 Years of Operating Experience</h2>
+        <p class="lead">AIADVANTAGE is led by Bill Skidd — a technologist, systems architect, operator, and marketer with three decades of experience across technology, systems architecture, marketing, finance, operations, and business transformation.</p>
+        <p class="muted" style="margin-top:16px">This background matters because successful AI adoption is not just about tools. It requires understanding how information moves through a company, how people work, how brands communicate, how decisions are made, and where leverage can compound. Bill currently serves as Chief of Staff at an AI/quant firm, where he builds production AI workflows — including a research-automation system that replaced hundreds of hours of manual work — and has driven measurable market growth across earlier marketing and operating roles.</p>
+        <div class="chips">
+          <span class="chip">Systems Architecture</span>
+          <span class="chip">Workflow Design</span>
+          <span class="chip">AI Optimization</span>
+          <span class="chip">Knowledge Management</span>
+          <span class="chip">Brand &amp; Communication</span>
+          <span class="chip">Sales &amp; Marketing Ops</span>
+          <span class="chip">Executive Decision Support</span>
+          <span class="chip">Practical Team Training</span>
+        </div>
+        <p class="mastery" style="font-size:18px;margin-top:24px">The result is a customized AI foundation designed around <span class="accent">how your company actually works.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 15-DAY ENGAGEMENT ============ -->
+<section id="engagement">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Engagement</span>
+      <h2>The 15-Day AIADVANTAGE Buildout</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-card">
+        <span class="tl-num">1</span>
+        <span class="days">Days 1–3</span>
+        <h3>Diagnose &amp; Prioritize</h3>
+        <div class="tl-bar"></div>
+        <ul>
+          <li>AI opportunity map</li>
+          <li>Workflow priority list</li>
+          <li>Knowledge audit</li>
+          <li>Tool &amp; automation recommendations</li>
+          <li>Risk &amp; governance review</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <span class="tl-num">2</span>
+        <span class="days">Days 4–8</span>
+        <h3>Structure &amp; Build</h3>
+        <div class="tl-bar"></div>
+        <ul>
+          <li>AI-ready knowledge architecture</li>
+          <li>Custom prompt &amp; workflow library</li>
+          <li>Brand voice &amp; writing system</li>
+          <li>Reusable templates</li>
+          <li>Initial automations &amp; assistants</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <span class="tl-num">3</span>
+        <span class="days">Days 9–12</span>
+        <h3>Implement &amp; Train</h3>
+        <div class="tl-bar"></div>
+        <ul>
+          <li>Team training session</li>
+          <li>Live workflow testing</li>
+          <li>Refined AI assistants</li>
+          <li>Presentation/reporting review</li>
+          <li>Safe-use &amp; governance guidance</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <span class="tl-num">4</span>
+        <span class="days">Days 13–15</span>
+        <h3>Operationalize &amp; Extend</h3>
+        <div class="tl-bar"></div>
+        <ul>
+          <li>Final AI operating playbook</li>
+          <li>Organized asset library</li>
+          <li>90-day expansion roadmap</li>
+          <li>Governance checklist</li>
+          <li>Future automation recommendations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARTIFACTS (grouped) ============ -->
+<section id="artifacts" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What You Leave With</span>
+      <h2>Tangible, Reusable Product Artifacts — Not Vague Advice</h2>
+      <p class="muted" style="margin-top:14px;font-size:16px">Everything below is built around your business, organized into six working systems your team can understand, reuse, and extend.</p>
+    </div>
+    <div class="cat-grid">
+
+      <!-- 1. Knowledge foundation -->
+      <div class="cat">
+        <div class="cat-head">
+          <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16M4 12h16M4 19h10" stroke-linecap="round"/><circle cx="19" cy="19" r="2"/></svg></span>
+          <h3>Knowledge &amp; Process Foundation</h3>
+        </div>
+        <p class="cat-sub">The structured context that makes every AI output better.</p>
+        <div class="cat-items">
+          <div class="cat-item"><span class="ci-t">AI-Ready Knowledge Architecture.</span> <span class="ci-d">Your knowledge organized into hierarchical projects, brand systems, templates, product information, sales materials, FAQs, internal processes, and decision-support documents — so AI has the context it needs to produce consistent, useful work.</span></div>
+          <div class="cat-item"><span class="ci-t">SOP &amp; Training Document Systems.</span> <span class="ci-d">Reusable workflows that turn institutional knowledge into SOPs, onboarding materials, process guides, checklists, and knowledge-base entries.</span></div>
+        </div>
+      </div>
+
+      <!-- 2. Brand & comms -->
+      <div class="cat">
+        <div class="cat-head">
+          <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z" stroke-linejoin="round" stroke-linecap="round"/></svg></span>
+          <h3>Brand, Voice &amp; Communication</h3>
+        </div>
+        <p class="cat-sub">A consistent company voice across everything AI helps you write.</p>
+        <div class="cat-items">
+          <div class="cat-item"><span class="ci-t">Brand, Voice &amp; Writing Systems.</span> <span class="ci-d">Reusable instructions that teach AI how your company should sound across emails, proposals, presentations, reports, social posts, and executive summaries.</span></div>
+          <div class="cat-item"><span class="ci-t">Customer Response &amp; Support Systems.</span> <span class="ci-d">Response frameworks that improve speed, consistency, tone, and accuracy in customer-facing communication — while preserving human judgment and approval.</span></div>
+        </div>
+      </div>
+
+      <!-- 3. Deliverable engines -->
+      <div class="cat">
+        <div class="cat-head">
+          <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 17l4-4 3 3 4-5 3 4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Document &amp; Deliverable Engines</h3>
+        </div>
+        <p class="cat-sub">Turn hours of drafting into minutes of review.</p>
+        <div class="cat-items">
+          <div class="cat-item"><span class="ci-t">Presentation Automation Systems.</span> <span class="ci-d">Workflows that use your voice, value proposition, and design language to create tailored decks, sales materials, and executive deliverables with embedded design direction.</span></div>
+          <div class="cat-item"><span class="ci-t">Proposal &amp; Client Deliverable Engines.</span> <span class="ci-d">Reusable systems for proposals, scopes of work, client briefs, onboarding packets, strategic plans, and account-specific recommendations.</span></div>
+          <div class="cat-item"><span class="ci-t">Executive Briefing Systems.</span> <span class="ci-d">Workflows that summarize complex information into decision-ready briefs: key takeaways, risks, opportunities, next steps, and recommended actions.</span></div>
+        </div>
+      </div>
+
+      <!-- 4. Research -->
+      <div class="cat">
+        <div class="cat-head">
+          <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5" stroke-linecap="round"/></svg></span>
+          <h3>Research &amp; Intelligence</h3>
+        </div>
+        <p class="cat-sub">Living reference assets your team actually reuses.</p>
+        <div class="cat-items">
+          <div class="cat-item"><span class="ci-t">Reusable Deep-Research Reports.</span> <span class="ci-d">Research systems that produce comprehensive market, industry, competitive, product, regulatory, or client intelligence — built to become living reference assets for strategy, sales, marketing, investment, and operations, not one-time documents.</span></div>
+        </div>
+      </div>
+
+      <!-- 5. Agents, dashboards, automation -->
+      <div class="cat">
+        <div class="cat-head">
+          <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M9 14h.01M15 14h.01" stroke-linecap="round"/></svg></span>
+          <h3>Agents, Dashboards &amp; Automation</h3>
+        </div>
+        <p class="cat-sub">Operating leverage that runs alongside your team.</p>
+        <div class="cat-items">
+          <div class="cat-item"><span class="ci-t">Dashboards &amp; Agentic Assistants.</span> <span class="ci-d">Operating views that help leadership monitor priorities, track initiatives, surface insights, and coordinate follow-up — with assistants for sales, marketing, ops, finance, recruiting, or executive support.</span></div>
+          <div class="cat-item"><span class="ci-t">Industry-Specific Knowledge Agents.</span> <span class="ci-d">Agents built around your industry, customers, competitors, terminology, and operating model to help with research, drafting, analysis, and planning.</span></div>
+          <div class="cat-item"><span class="ci-t">Sales &amp; Marketing Workflow Libraries.</span> <span class="ci-d">AI-assisted workflows for prospect research, account planning, email sequences, outreach, lead qualification, campaign planning, and sales enablement.</span></div>
+          <div class="cat-item"><span class="ci-t">Automation Starter Layer.</span> <span class="ci-d">Lightweight automations for repetitive tasks: document creation, meeting summaries, task extraction, CRM updates, reporting, and content repurposing.</span></div>
+        </div>
+      </div>
+
+      <!-- 6. Governance & roadmap -->
+      <div class="cat">
+        <div class="cat-head">
+          <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V6l8-3z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Governance &amp; Roadmap</h3>
+        </div>
+        <p class="cat-sub">Safe to use today, and a clear path for tomorrow.</p>
+        <div class="cat-items">
+          <div class="cat-item"><span class="ci-t">Governance &amp; Safe-Use Guidelines.</span> <span class="ci-d">A practical AI usage policy covering data handling, privacy, approval workflows, hallucination risk, customer-facing content, and escalation rules.</span></div>
+          <div class="cat-item"><span class="ci-t">90-Day AI Expansion Roadmap.</span> <span class="ci-d">A plan for what to build next, which workflows to automate, which agents to improve, which integrations to consider, and how to keep increasing team capability.</span></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="closing-line" style="margin-top:34px;font-size:19px">Every artifact is designed to be understood, reused, refined, and <span class="accent">extended by your team.</span></p>
+  </div>
+</section>
+
+<!-- ============ OUTCOMES ============ -->
+<section id="outcomes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Projected Outcomes</span>
+      <h2>Practical Outcomes We Build Toward</h2>
+      <p class="muted" style="margin-top:14px;font-size:16px">AIADVANTAGE is designed to create measurable leverage, but results depend on your workflows, data quality, team adoption, and implementation discipline. Rather than promising universal outcomes, we build toward realistic operating targets.</p>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><span class="o-label">Administrative workflow time savings</span><span class="o-target">10–30% in selected workflows</span></div>
+      <div class="outcome"><span class="o-label">Proposal &amp; presentation drafting</span><span class="o-target">25–50% faster first drafts</span></div>
+      <div class="outcome"><span class="o-label">Research &amp; briefing preparation</span><span class="o-target">30–60% faster synthesis</span></div>
+      <div class="outcome"><span class="o-label">Sales &amp; marketing consistency</span><span class="o-target">Faster, more personalized follow-through</span></div>
+      <div class="outcome"><span class="o-label">Internal knowledge reuse</span><span class="o-target">Faster access to prior work</span></div>
+      <div class="outcome"><span class="o-label">Customer communication</span><span class="o-target">More consistent tone &amp; response prep</span></div>
+      <div class="outcome"><span class="o-label">Team AI fluency</span><span class="o-target">Working competence across roles</span></div>
+      <div class="outcome"><span class="o-label">Leadership visibility</span><span class="o-target">Better dashboards &amp; decision support</span></div>
+    </div>
+    <p class="disclaimer"><b>These are planning projections, not guaranteed results.</b> The engagement is designed to create the systems, habits, and operating foundation that make these gains realistic.</p>
+  </div>
+</section>
+
+<!-- ============ FIT ============ -->
+<section id="fit" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">A Finite, Selective Engagement</span>
+      <h2>Is AIADVANTAGE Right for You?</h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit yes">
+        <h3><span class="tag">A strong fit</span></h3>
+        <ul>
+          <li>A small or mid-sized company ready to commit 15 focused days</li>
+          <li>Leadership that wants to own its AI capability, not rent it</li>
+          <li>Real workflows, documents, and a brand worth building around</li>
+          <li>A team willing to learn and extend the systems we build together</li>
+        </ul>
+      </div>
+      <div class="fit no">
+        <h3><span class="tag">Not the right fit</span></h3>
+        <ul>
+          <li>Looking for a one-hour workshop or a strategy deck to file away</li>
+          <li>Wanting a black-box vendor to run AI <em>for</em> you indefinitely</li>
+          <li>Expecting AI to replace people rather than extend them</li>
+          <li>Not ready to organize knowledge or change how work gets done</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Early Transformation Examples</span>
+      <h2>What the Foundation Makes Possible</h2>
+    </div>
+    <div class="tst-grid">
+      <div class="tst">
+        <p class="quote">Helped leverage a design portfolio, organize a full body of work, cut administrative overhead, and create the operating foundation to launch an independent architecture agency with greater clarity and speed.</p>
+        <div class="who"><span class="avatar">PS</span><div><b>Patrick Suarez</b><span>Architect</span></div></div>
+      </div>
+      <div class="tst">
+        <p class="quote">Helped crystallize a 10-year ambition to define a multi-company portfolio into a cohesive business plan, operating structure, and investment strategy.<br><br><br></p>
+        <div class="who"><span class="avatar">LK</span><div><b>Lisa Kotasek</b><span>Entrepreneur</span></div></div>
+      </div>
+      <div class="tst">
+        <p class="quote">Helped transform a family-owned retail business into a branded products company serving corporate, nonprofit, and institutional clients — including Interactive Brokers, America250, and the PGA Tour.</p>
+        <div class="who"><span class="avatar">NL</span><div><b>Nicolai Lund</b><span>CEO</span></div></div>
+      </div>
+    </div>
+    <p class="ph-note">Placeholder testimonials — edit names, titles, and quotes before publishing.</p>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="pricing-card">
+      <svg class="net-bg" viewBox="0 0 880 360" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="pricing-node-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="rgba(23, 156, 138,.22)"/>
+            <stop offset="1" stop-color="rgba(23, 156, 138,0)"/>
+          </radialGradient>
+        </defs>
+        <rect width="880" height="360" fill="transparent"/>
+        <g stroke="var(--node-line)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-30 250 L92 194 L214 222 L338 140 L486 178 L628 96 L792 142 L924 72"/>
+          <path d="M58 60 L214 222 L184 330 L338 140 L330 42"/>
+          <path d="M486 178 L548 318 L792 142 L836 282"/>
+          <path d="M628 96 L690 236 L548 318"/>
+        </g>
+        <g fill="url(#pricing-node-glow)">
+          <circle cx="92" cy="194" r="22"/><circle cx="214" cy="222" r="18"/><circle cx="338" cy="140" r="20"/><circle cx="486" cy="178" r="22"/><circle cx="628" cy="96" r="19"/><circle cx="792" cy="142" r="22"/><circle cx="548" cy="318" r="17"/>
+        </g>
+        <g fill="var(--node-dot)">
+          <circle cx="58" cy="60" r="2.8"/><circle cx="92" cy="194" r="3.2"/><circle cx="214" cy="222" r="3.6"/><circle cx="338" cy="140" r="3.2"/><circle cx="330" cy="42" r="2.6"/><circle cx="486" cy="178" r="3.5"/><circle cx="548" cy="318" r="3"/><circle cx="628" cy="96" r="3.4"/><circle cx="690" cy="236" r="2.8"/><circle cx="792" cy="142" r="3.2"/><circle cx="836" cy="282" r="2.7"/>
+        </g>
+      </svg>
+      <div class="pricing-inner">
+        <div>
+          <span class="eyebrow">A Focused Investment</span>
+          <h2>A Clear Engagement, a Clear Price</h2>
+          <div class="price-amount">$10,000 <span>fixed fee</span></div>
+          <div class="price-sub">A 15-day consulting and setup engagement — intentionally compressed, practical, and output-driven.</div>
+          <a class="btn btn-primary" href="mailto:bill@excite.io?subject=AIADVANTAGE%20Application&body=Company%3A%0AWhat%20you%27re%20hoping%20to%20build%3A%0ATimeline%3A">Apply for a 15-Day Buildout <span class="arrow">→</span></a>
+          <p class="support">Designed for small and mid-sized companies that want serious AI capability without the cost, delay, or complexity of a large enterprise transformation — one senior operator, no agency overhead.</p>
+        </div>
+        <div>
+          <h3 style="color:#fff;font-family:'Space Grotesk';font-size:17px;margin-bottom:16px">Everything included</h3>
+          <ul class="includes">
+            <li>Discovery &amp; workflow audit</li>
+            <li>AI opportunity map</li>
+            <li>Knowledge architecture</li>
+            <li>Prompt &amp; workflow library</li>
+            <li>Brand &amp; writing systems</li>
+            <li>Product artifact creation</li>
+            <li>Automations &amp; agent prototypes</li>
+            <li>Team training</li>
+            <li>Governance guidance</li>
+            <li>90-day expansion roadmap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NOW ============ -->
+<section class="alt" style="position:relative;overflow:hidden">
+  <svg class="net-bg" style="position:absolute;inset:0;width:100%;height:100%;opacity:.18;pointer-events:none" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="why-node-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="rgba(23, 156, 138,.2)"/>
+        <stop offset="1" stop-color="rgba(23, 156, 138,0)"/>
+      </radialGradient>
+    </defs>
+    <g stroke="var(--node-line)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-70 104 L102 152 L258 98 L430 188 L610 132 L790 224 L1000 154 L1270 236"/>
+      <path d="M102 152 L188 354 L430 188 L510 388 L790 224"/>
+      <path d="M258 98 L356 18 L610 132 L708 62 L1000 154"/>
+      <path d="M188 354 L370 454 L510 388 L706 438 L930 328 L1000 154"/>
+    </g>
+    <g fill="url(#why-node-glow)">
+      <circle cx="102" cy="152" r="20"/><circle cx="430" cy="188" r="22"/><circle cx="610" cy="132" r="20"/><circle cx="790" cy="224" r="24"/><circle cx="1000" cy="154" r="20"/><circle cx="510" cy="388" r="18"/><circle cx="930" cy="328" r="18"/>
+    </g>
+    <g fill="var(--node-dot)">
+      <circle cx="102" cy="152" r="3"/><circle cx="188" cy="354" r="2.8"/><circle cx="258" cy="98" r="2.9"/><circle cx="356" cy="18" r="2.4"/><circle cx="430" cy="188" r="3.3"/><circle cx="510" cy="388" r="3"/><circle cx="610" cy="132" r="3.2"/><circle cx="708" cy="62" r="2.6"/><circle cx="790" cy="224" r="3.5"/><circle cx="930" cy="328" r="2.8"/><circle cx="1000" cy="154" r="3.2"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:24px">
+      <span class="eyebrow" style="color:var(--purple-soft)">Why Now</span>
+      <h2>AI Will Keep Changing. Your Foundation Should Keep Compounding.</h2>
+    </div>
+    <p class="lead" style="max-width:860px">The companies that win with AI won't simply be the ones that buy the newest tools. They'll be the ones that organize their knowledge, train their teams, redesign their workflows, and build internal capability. AIADVANTAGE gives your company a practical foundation that is future-compatible.</p>
+    <p class="lead" style="max-width:860px;margin-top:16px">As models improve, tools evolve, and agents become more capable, your company will already have the structures needed to benefit: organized knowledge, reusable workflows, brand-aware instructions, trained people, governance practices, and a roadmap for continued expansion.</p>
+    <p class="why-close">Don't rent your AI advantage. <span class="accent">Build it, own it, and keep extending it.</span></p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="dark final" style="border-top:1px solid rgba(255,255,255,.08)">
+  <svg class="net-bg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="final-node-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="rgba(23, 156, 138,.2)"/>
+        <stop offset="1" stop-color="rgba(23, 156, 138,0)"/>
+      </radialGradient>
+    </defs>
+    <g fill="url(#final-node-glow)">
+      <circle cx="70" cy="340" r="20"/><circle cx="180" cy="112" r="18"/><circle cx="224" cy="250" r="20"/><circle cx="388" cy="304" r="20"/><circle cx="476" cy="92" r="18"/><circle cx="570" cy="210" r="22"/><circle cx="692" cy="96" r="18"/><circle cx="750" cy="268" r="20"/><circle cx="918" cy="176" r="20"/><circle cx="1050" cy="82" r="18"/><circle cx="1150" cy="232" r="18"/>
+    </g>
+    <g stroke="var(--node-line)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M70 340 L224 250 L388 304 L570 210 L750 268 L918 176 L1150 232"/>
+      <path d="M224 250 L180 112 L388 304 L476 92 L570 210"/>
+      <path d="M750 268 L692 96 L918 176 L1050 82"/>
+    </g>
+    <g fill="var(--node-dot)">
+      <circle cx="70" cy="340" r="2.5"/><circle cx="180" cy="112" r="2.6"/><circle cx="224" cy="250" r="3"/><circle cx="388" cy="304" r="3.1"/><circle cx="476" cy="92" r="2.7"/><circle cx="570" cy="210" r="3.4"/><circle cx="692" cy="96" r="2.7"/><circle cx="750" cy="268" r="3.1"/><circle cx="918" cy="176" r="3.2"/><circle cx="1050" cy="82" r="2.7"/><circle cx="1150" cy="232" r="2.8"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--purple-soft)">Get Started</span>
+    <h2>Build the AI Foundation Your Company Will Own</h2>
+    <p class="lead">In 15 days, AIADVANTAGE helps your company move from scattered AI experimentation to a structured, practical operating foundation. You leave with systems, artifacts, workflows, and training your team can use immediately — and keep improving long after the engagement ends.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="mailto:bill@excite.io?subject=AIADVANTAGE%20Application&body=Company%3A%0AWhat%20you%27re%20hoping%20to%20build%3A%0ATimeline%3A">Apply for AIADVANTAGE <span class="arrow">→</span></a>
+      <!--<a class="btn btn-light" href="#artifacts">See What We Build</a>-->
+    </div>
+    <p class="secondary-line">15 days. $10,000. Custom-built around your company.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <svg class="net-bg" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <g stroke="var(--node-line)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 92 L160 54 L320 76 L520 34 L720 68 L920 38 L1200 82"/>
+    </g>
+    <g fill="var(--node-dot)">
+      <circle cx="160" cy="54" r="2.4"/><circle cx="320" cy="76" r="2.6"/><circle cx="520" cy="34" r="2.5"/><circle cx="720" cy="68" r="2.6"/><circle cx="920" cy="38" r="2.4"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <span class="brand" style="font-family:'Space Grotesk'">AIADVANTAGE</span>
+    <span>Own your company's AI advantage in 15 days.</span>
+    <a href="mailto:bill@excite.io?subject=AIADVANTAGE%20Application">bill@excite.io</a>
+  </div>
+</footer>
+
+</body>
+</html>
