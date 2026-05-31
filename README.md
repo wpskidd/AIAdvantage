@@ -14,9 +14,6 @@ A 15-day, fixed-fee ($10,000) bespoke AI consulting and setup engagement for sma
 
 ## To finish before publishing
 - **CTAs** point to `mailto:bill@excite.io`. Swap for a dedicated AIADVANTAGE inbox or a calendar/scheduling link if preferred.
-- **Founder photo** is a placeholder panel — replace with a headshot.
-- **Testimonials** (Patrick Suarez / Lisa Kotasek / Nicolai Lund) are placeholders — confirm real, attributable quotes or anonymize before going live.
-- Confirm the founder bio specifics (current title, metrics) are how you want them stated publicly.
 
 ## Notes on the brief
 Built from the supplied AIADVANTAGE brief with deliberate changes: 14 deliverables grouped into 6 titled categories; "500+ page report" reframed as living intelligence reports; named founder; added a "right fit / not a fit" qualifier; "couture" used once. See chat for the full critical review.
